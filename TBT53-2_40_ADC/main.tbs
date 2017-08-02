@@ -1,0 +1,18 @@
+include "global.tbh"
+
+'====================================================================
+sub on_sys_init()
+	if tbt53_init(YES)<>OK then
+		sys.debugprint("SSI channel could not be allocated, using bit banging instead."+CR_LF)
+	end if
+end sub
+
+sub on_sys_timer()
+	dim a as real
+
+	if tbt53_get_current(a)=OK then
+		sys.debugprint(ftostr(a,FTOSTR_MODE_AUTO,6)+CR_LF)
+	else
+		sys.debugprint("open loop"+CR_LF)
+	end if
+end sub
