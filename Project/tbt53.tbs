@@ -38,11 +38,7 @@ function tbt53_init(use_ssi as no_yes) as ok_ng
 	if i2c_num_tbt53 < 4 then
 		ssi.channel = i2c_num_tbt53
 		ssi.enabled = NO
-		#IF PLATFORM_ID=TPP2WG2 or PLATFORM_ID=TPP3WG2 or PLATFORM_ID=TPP2G2 or PLATFORM_ID=TPP3G2
-			ssi.baudrate = 20
-		#ELIF PLATFORM_ID=TPP2W or PLATFORM_ID=TPP3W
-			ssi.baudrate = 1
-		#ENDIF
+		ssi.baudrate=PL_SSI_BAUDRATES_100kHz
 		ssi.clkmap = TBT53_CLK_PIN
 		ssi.dimap = TBT53_DATA_PIN
 		ssi.domap = TBT53_DATA_PIN
